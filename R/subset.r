@@ -17,6 +17,8 @@
 #' @param drop if TRUE (default) subsetting a single row or column will returned a vector.
 #' @param ... further arguments passed to or from methods.
 #'
+#' @return A selected subset of the provided 'annmatrix' object.
+#'
 #' @seealso \code{as.annmatrix}
 #'
 #' @examples
@@ -61,7 +63,7 @@
       attr(mat, ".annmatrix.cann") <- attr(x, ".annmatrix.cann")[j,,drop = FALSE]
     }
 
-    class(mat) <- append("annmatrix", oldClass(mat))
+    class(mat) <- append("annmatrix", class(mat))
   }
 
   mat

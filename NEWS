@@ -1,22 +1,46 @@
 Package: annmatrix
 ==================
 
-Version: 0.1.1 [TBD]
+Version 0.1.2 [2023-05-14]
+
+BUG FIXES:
+
+ * The class of 'annmatrix' objects now also include "matrix" and "array" fixing a bug where matrix-generic methods like unique() treated annmatrix like a vector.
+ * 'stack(X)' now works without errors when X contains duplicated row names and/or duplicated column names.
 
 NEW FEATURES:
 
- * New generic method 'as.annmatrix()' which will be used to convert other objects to annmatrix.
- * New method 'as.annmatrix.matrix()' for turning a regular matrix into annmatrix with empty annotations.
- * New method 'stack.annmatrix()' for turning annmatrix object into a data frame.
+ * 'scale()' now preserves the annmatrix class.
+ * 'rbind()' and 'cbind()' now preserve the annmatrix class and combine annotations.
+
+CHANGES:
+
+ * annmatrix() constructor no longer tries to set celver annotation names when 'rann' and 'cann' arguments are passed as vectors.
+
+DOCUMENTATION:
+
+ * Added information about return values for all .Rd files (as requested for submission to CRAN).
+
+INTERNAL:
+
+ * Added unit tests for annmatrix constructor
+
+
+Version: 0.1.1 [2023-05-01]
+
+NEW FEATURES:
+
+ * 'as.annmatrix()' converts various objects to 'annmatrix' (for now only works on matrices).
+ * 'stack()' turns annmatrix object into a long format data frame.
 
 DOCUMENTATION:
 
  * Simplified the documentation of 'help(annmatrix)' by moving conversion and subsetting methods to another place.
 
 
-Version: 0.1.0 [TBD]
+Version: 0.1.0 [2023-04-29]
 
 NEW FEATURES:
 
- * Created and submitted to CRAN.
+ * Created
 

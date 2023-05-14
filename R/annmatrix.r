@@ -44,6 +44,9 @@
 #' @param names a character vector of existing row/column annotation names.
 #' @param value a value that will be assigned to row/column annotation field.
 #'
+#' @return \code{annmatrix} returns an R object of class 'annmatrix'.
+#  \code{@} and \code{$} return selected row and column annotations, respectively.
+#'
 #' @seealso \code{as.annmatrix}
 #'
 #' @examples
@@ -118,18 +121,12 @@ annmatrix <- function(x, rann, cann) {
 
   if (missing(rann) || is.null(rann)) {
     rann <- data.frame(row.names = seq_len(nrow(x)))
-  } else if (is.vector(rann)) {
-    rann <- as.data.frame(rann)
-    names(rann) <- deparse(substitute(rann))
   } else {
     rann <- as.data.frame(rann)
   }
 
   if (missing(cann) || is.null(cann)) {
     cann <- data.frame(row.names = seq_len(ncol(x)))
-  } else if (is.vector(cann)) {
-    cann <- as.data.frame(cann)
-    names(cann) <- deparse(substitute(cann))
   } else {
     cann <- as.data.frame(cann)
   }
@@ -141,7 +138,7 @@ annmatrix <- function(x, rann, cann) {
     stop("Number of 'cann' rows must match the number of columns in 'x'")
   }
 
-  structure(x, class = c("annmatrix", oldClass(x)), .annmatrix.rann = rann, .annmatrix.cann = cann)
+  structure(x, class = c("annmatrix", class(x)), .annmatrix.rann = rann, .annmatrix.cann = cann)
 }
 
 #' @rdname annmatrix
